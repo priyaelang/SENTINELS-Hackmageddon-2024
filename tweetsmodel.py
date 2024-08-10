@@ -24,13 +24,14 @@ else:
     print("Unexpected data format. Expected a list.")
     tweets = []
 
-# Filter tweets based on keywords in the 'text' field
+# Filter tweets based on incidents
 relevant_tweets = []
 for tweet in tweets:
-    tweet_text = tweet.get('text', '').lower()
-    if any(keyword in tweet_text for keyword in keywords):
+    incident_text = tweet.get('incident', '').lower()
+    if incident_text:  # Check if there is any incident text
         relevant_tweets.append({
-            'description': tweet.get('text', ''),
+            'event_name': tweet.get('event_name', ''),
+            'description': incident_text,
             'time': tweet.get('created_at', ''),
             'location': tweet.get('location', '')
         })
@@ -40,3 +41,4 @@ with open('filtered_incidents.json', 'w') as f:
     json.dump(relevant_tweets, f, indent=4)
 
 print("Filtered incidents have been saved to 'filtered_incidents.json'.")
+
