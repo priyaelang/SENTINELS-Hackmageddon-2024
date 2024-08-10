@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // For classic icons
+import 'alert_provider.dart';
 
-class IncidentReportsPage extends StatefulWidget {
+class IncidentReportsPage extends StatelessWidget {
   final String eventTitle;
   final String eventDate;
   final String eventLocation;
@@ -22,120 +23,123 @@ class IncidentReportsPage extends StatefulWidget {
   });
 
   @override
-  _IncidentReportsPageState createState() => _IncidentReportsPageState();
-}
-
-class _IncidentReportsPageState extends State<IncidentReportsPage> {
-  Future<List<Map<String, String>>> loadIncidents() async {
-    try {
-      final jsonString = await rootBundle.loadString('assets/filtered_incidents.json');
-      final List<dynamic> jsonResponse = json.decode(jsonString);
-      return jsonResponse.map((item) => Map<String, String>.from(item)).toList();
-    } catch (e) {
-      print("Error loading incidents: $e");
-      return [];
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // Listen for alerts and show a dialog when an alert is triggered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final alertMessage = Provider.of<AlertProvider>(context).alertMessage;
+      if (alertMessage != null) {
+        _showIncidentDialog(context, alertMessage);
+        Provider.of<AlertProvider>(context, listen: false).clearAlert();
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Incident Reports'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Handle notification button press
-            },
-          ),
-        ],
       ),
-      body: FutureBuilder<List<Map<String, String>>>(
-        future: loadIncidents(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading data'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No incidents found'));
-          }
-
-          final incidents = snapshot.data!;
-
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ListView(
+      body: SingleChildScrollView( // Wrap with SingleChildScrollView
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                Text(
-                  widget.eventTitle,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-                Text(
-                  widget.eventDate,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.grey,
-                      ),
-                ),
-                SizedBox(height: 20),
-                ListTile(
-                  leading: Icon(Icons.location_on),
-                  title: Text('Location'),
-                  subtitle: Text(widget.eventLocation),
-                ),
-                ListTile(
-                  leading: Icon(Icons.people),
-                  title: Text('Number of Attendees'),
-                  subtitle: Text('${widget.numberOfAttendees} attendees'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.report),
-                  title: Text('Number of Incidents'),
-                  subtitle: Text('${widget.numberOfIncidents} incidents occurred'),
-                ),
-                Divider(),
-                Text(
-                  'List of Incidents',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-                ...incidents.map((incident) {
-                  return ListTile(
-                    leading: Icon(Icons.warning, color: Colors.red),
-                    title: Text(incident['description']!),
-                    subtitle: Text(
-                        'Time: ${incident['time']}, Location: ${incident['location']}'),
-                  );
-                }).toList(),
-                Divider(),
-                Text(
-                  'Preventive Measures Taken',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-                ...widget.preventiveMeasures.map((measure) {
-                  return ListTile(
-                    leading: Icon(Icons.check_circle, color: Colors.green),
-                    title: Text(measure),
-                  );
-                }).toList(),
+                Icon(Icons.event, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Event: $eventTitle', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ],
             ),
-          );
-        },
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.date_range, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Date: $eventDate', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.location_on, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Location: $eventLocation', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.people, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Number of Attendees: $numberOfAttendees', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.warning, color: Colors.red),
+                SizedBox(width: 8),
+                Text('Number of Incidents: $numberOfIncidents', style: TextStyle(fontSize: 16, color: Colors.red)),
+              ],
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(FontAwesomeIcons.exclamationTriangle, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Incidents:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ...incidents.map((incident) {
+              return ListTile(
+                leading: Icon(FontAwesomeIcons.bullhorn, color: Colors.orange),
+                title: Text(incident['description'] ?? 'No description'),
+                subtitle: Text('${incident['time']} at ${incident['location']}'),
+              );
+            }).toList(),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(Icons.shield, color: Colors.blue),
+                SizedBox(width: 8),
+                Text('Preventive Measures:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ...preventiveMeasures.map((measure) {
+              return ListTile(
+                leading: Icon(Icons.check_circle, color: Colors.green),
+                title: Text(measure),
+              );
+            }).toList(),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle adding new alert
-        },
-        child: Icon(Icons.add_alert),
-        backgroundColor: Colors.red,
-      ),
+    );
+  }
+
+  // Function to show a dialog alert in the center of the screen
+  void _showIncidentDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(Icons.warning, color: Colors.red),
+              SizedBox(width: 8),
+              Text('Alert'),
+            ],
+          ),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
