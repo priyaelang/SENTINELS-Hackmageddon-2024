@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpectra</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script1.js"></script>
+</head>
+<body>
+    <!-- Background Image -->
+    <img src="C:\Users\priya\Desktop\crowd management\img3.jpeg" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+    <header>
+        <h1>SafeSpectra</h1>
+    </header>
+    
+    <nav>
+        <ul class="tabs">
+            <li class="tab-link" onclick="openTab('dashboard')">Dashboard</li>
+            <li class="tab-link" onclick="openTab('incident-reports')">Incident Reports</li>
+            <li class="tab-link" onclick="openTab('crowd-details')">Crowd Details</li>
+        </ul>
+    </nav>
+
+    <section id="dashboard" class="tab-content active">
+        <div class="container">
+            <h2>Visualization</h2>
+            <canvas id="crowdChart"></canvas>
+
+            <!-- Form to get image path and threshold -->
+            <form id="predictionForm" onsubmit="analyzeCrowd(event)">
+                <label for="imagePath">Image Path:</label>
+                <input type="text" id="imagePath" name="imagePath" required>
+
+                <label for="threshold">Threshold:</label>
+                <input type="number" id="threshold" name="threshold" required>
+
+                <button type="submit">Analyze Crowd</button>
+            </form>
+
+            <!-- Alert Box -->
+            <div id="alertBox" class="alert-box">
+                <span id="alertMessage"></span>
+                <button onclick="closeAlert()">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="incident-reports" class="tab-content">
+        <div class="container">
+            <h2>Incident Reports</h2>
+            <div class="event-container" onclick="showEventDetails('event1')">
+                <h3>Event 1</h3>
+                <p class="location">Location: Central Park</p>
+                <p class="description">An annual music festival.</p>
+            </div>
+            <div class="event-container" onclick="showEventDetails('event2')">
+                <h3>Event 2</h3>
+                <p class="location">Location: Downtown Plaza</p>
+                <p class="description">A charity run for cancer research.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="crowd-details" class="tab-content">
+        <div class="container">
+            <h2>Crowd Details</h2>
+            <div class="detail-container">
+                <h3>Crowd Density</h3>
+                <p>Data on the density of the crowd at different locations and times.<
