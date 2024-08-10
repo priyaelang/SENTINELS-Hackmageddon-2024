@@ -1,0 +1,151 @@
+{
+    "tweets": [
+        {
+            "created_at": "2024-08-05 22:11:00",
+            "event_name": "New Year Celebration Festival",
+            "incident": "A fight broke out in the crowd, causing a temporary disturbance.",
+            "user": "festivalFanHyderabad",
+            "location": "Hyderabad, India"
+        },
+        {
+            "created_at": "2024-08-04 23:58:00",
+            "event_name": "Cricket Match",
+            "incident": "A large group of fans tried to storm the field, leading to a delay.",
+            "user": "cricketmatchFanPune",
+            "location": "Pune, India"
+        },
+        {
+            "created_at": "2024-08-07 18:48:00",
+            "event_name": "Tech Event",
+            "incident": "An overcrowded area near the stage led to a brief panic among attendees.",
+            "user": "techeventFanChennai",
+            "location": "Chennai, India"
+        },
+        {
+            "created_at": "2024-08-06 05:08:00",
+            "event_name": "Garba Night",
+            "incident": "A scuffle occurred between two groups, resulting in minor injuries.",
+            "user": "GarbanightFanHyderabad",
+            "location": "Hyderabad, India"
+        },
+        {
+            "created_at": "2024-08-10 14:33:00",
+            "event_name": "Music Concert",
+            "incident": "Overcrowding at the entrance led to a security breach.",
+            "user": "musicLoverDelhi",
+            "location": "Delhi, India"
+        },
+        {
+            "created_at": "2024-08-09 20:21:00",
+            "event_name": "Art Exhibition",
+            "incident": "",
+            "user": "artEnthusiastMumbai",
+            "location": "Mumbai, India"
+        },
+        {
+            "created_at": "2024-08-08 17:56:00",
+            "event_name": "Food Festival",
+            "incident": "",
+            "user": "foodieBangalore",
+            "location": "Bangalore, India"
+        },
+        {
+            "created_at": "2024-08-03 19:12:00",
+            "event_name": "Marathon",
+            "incident": "",
+            "user": "marathonRunnerKolkata",
+            "location": "Kolkata, India"
+        },
+        {
+            "created_at": "2024-08-02 12:45:00",
+            "event_name": "Sports Meet",
+            "incident": "",
+            "user": "sportsFanChennai",
+            "location": "Chennai, India"
+        },
+        {
+            "created_at": "2024-08-01 23:30:00",
+            "event_name": "Cultural Fest",
+            "incident": "",
+            "user": "festFanHyderabad",
+            "location": "Hyderabad, India"
+        },
+        {
+            "created_at": "2024-07-31 21:10:00",
+            "event_name": "Book Fair",
+            "incident": "",
+            "user": "bookLoverDelhi",
+            "location": "Delhi, India"
+        },
+        {
+            "created_at": "2024-07-30 15:20:00",
+            "event_name": "Dance Competition",
+            "incident": "",
+            "user": "danceFanPune",
+            "location": "Pune, India"
+        },
+        {
+            "created_at": "2024-07-29 18:45:00",
+            "event_name": "Food and Drink Expo",
+            "incident": "",
+            "user": "expoAttendeeMumbai",
+            "location": "Mumbai, India"
+        },
+        {
+            "created_at": "2024-07-28 14:25:00",
+            "event_name": "Music Festival",
+            "incident": "",
+            "user": "musicFanBangalore",
+            "location": "Bangalore, India"
+        },
+        {
+            "created_at": "2024-07-27 20:05:00",
+            "event_name": "Film Screening",
+            "incident": "",
+            "user": "filmLoverKolkata",
+            "location": "Kolkata, India"
+        },
+        {
+            "created_at": "2024-07-26 22:40:00",
+            "event_name": "Tech Conference",
+            "incident": "",
+            "user": "techieChennai",
+            "location": "Chennai, India"
+        },
+        {
+            "created_at": "2024-07-25 16:30:00",
+            "event_name": "Charity Gala",
+            "incident": "",
+            "user": "galaAttendeeDelhi",
+            "location": "Delhi, India"
+        },
+        {
+            "created_at": "2024-07-24 12:55:00",
+            "event_name": "Sports Carnival",
+            "incident": "",
+            "user": "sportsFanMumbai",
+            "location": "Mumbai, India"
+        },
+        {
+            "created_at": "2024-07-23 09:30:00",
+            "event_name": "Local Fair",
+            "incident": "",
+            "user": "fairVisitorChennai",
+            "location": "Chennai, India"
+        },
+        {
+            "created_at": "2024-07-22 18:20:00",
+            "event_name": "Charity Run",
+            "incident": "",
+            "user": "charityRunnerPune",
+            "location": "Pune, India"
+        },
+        {
+            "created_at": "2024-07-21 14:10:00",
+            "event_name": "Music Jam",
+            "incident": "",
+            "user": "jamFanDelhi",
+            "location": "Delhi, India"
+        }
+    ]
+}
