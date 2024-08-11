@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeSpectra</title>
+    <title>Crowd Management System</title>
     <link rel="stylesheet" href="dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script1.js"></script>
 </head>
 <body>
-    <!-- Background Image -->
-    <img src="C:\Users\priya\Desktop\crowd management\img3.jpeg" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-
     <header>
-        <h1>SafeSpectra</h1>
+        <h1>Crowd Management System</h1>
     </header>
-    
+
     <nav>
         <ul class="tabs">
             <li class="tab-link" onclick="openTab('dashboard')">Visualization</li>
@@ -26,25 +22,8 @@
 
     <section id="dashboard" class="tab-content active">
         <div class="container">
-            <h2>Visualization</h2>
+            <h2>Dashboard</h2>
             <canvas id="crowdChart"></canvas>
-
-            <!-- Form to get image path and threshold -->
-            <form id="predictionForm" onsubmit="analyzeCrowd(event)">
-                <label for="imagePath">Image Path:</label>
-                <input type="text" id="imagePath" name="imagePath" required>
-
-                <label for="threshold">Threshold:</label>
-                <input type="number" id="threshold" name="threshold" required>
-
-                <button type="submit">Analyze Crowd</button>
-            </form>
-
-            <!-- Alert Box -->
-            <div id="alertBox" class="alert-box">
-                <span id="alertMessage"></span>
-                <button onclick="closeAlert()">Close</button>
-            </div>
         </div>
     </section>
 
@@ -69,4 +48,24 @@
             <h2>Crowd Details</h2>
             <div class="detail-container">
                 <h3>Crowd Density</h3>
-                <p>Data on the density of the crowd at different locations and times.<
+                <p>Data on the density of the crowd at different locations and times.</p>
+            </div>
+            <div class="detail-container">
+                <h3>Demographics</h3>
+                <p>Information about the age, gender, and other demographics of the crowd.</p>
+            </div>
+            <div class="detail-container">
+                <h3>Sentiment Analysis</h3>
+                <p>Analysis of social media data to gauge the mood and sentiment of the crowd.</p>
+            </div>
+            <div class="detail-container">
+                <h3>Security Incidents</h3>
+                <p>Details of any security-related incidents reported during the event.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script1.js"></script>
+</body>
+</html>
+
