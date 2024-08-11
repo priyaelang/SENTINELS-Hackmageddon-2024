@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 import os
 
 # Define paths
@@ -40,13 +39,3 @@ predicted_counts = detect_and_count_people(test_images)
 # Print results for the test images
 for i, count in enumerate(predicted_counts):
     print(f"Image {i + 1} detected {count} people.")
-
-# Optionally, visualize some results
-for i in range(min(5, len(test_images))):  # Display up to 5 images, or fewer if there are not enough
-    image = test_images[i]
-    rects, _ = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
-    for (x, y, w, h) in rects:
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    cv2.imshow(f'Detection - Image {i + 1}', image)
-    cv2.waitKey(0)
-cv2.destroyAllWindows()
