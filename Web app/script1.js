@@ -128,4 +128,7 @@ function openTab(tabName) {
   // Render the chart by default when the page loads
   window.onload = function() {
     openTab('dashboard');
+    setTimeout(function() {
+        alert("Higher Crowd Density Detected!");
+    }, 8000);
   };
