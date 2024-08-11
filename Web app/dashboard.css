@@ -1,137 +1,137 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: rgba(247, 226, 39, 0.5); /* Optional: Adds a slight dark overlay */
-}
-
-header {
-  background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
-
-nav {
-  background-color: rgba(68, 68, 68, 0.8); /* Slightly transparent background */
-}
-
-.tabs {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.tab-link {
-  padding: 14px 20px;
-  cursor: pointer;
-  color: white;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.tab-link:hover {
-  background-color: rgba(85, 85, 85, 0.8);
-}
-
-.tab-content {
-  padding: 20px;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.tab-content.active {
-  display: block;
-  opacity: 1;
-}
-
-.container {
-  width: 80%;
-  max-width: 800px;
-  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 20px auto;
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-canvas {
-  max-width: 100%;
-  height: auto;
-}
-
-.event-container, .detail-container {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.event-container:hover, .detail-container:hover {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.event-container h3, .detail-container h3 {
-  margin: 0;
-  color: #333;
-}
-
-.event-container .location, .detail-container p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #666;
-}
-
-.event-container .description {
-  margin: 0;
-  font-size: 12px;
-  color: #999;
-}
-
-#predictionForm {
-    margin-top: 20px;
-}
-
-#predictionForm label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-#predictionForm input, #predictionForm button {
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.alert-box {
-    display: none; /* Hidden by default */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: rgba(247, 226, 39, 0.5); /* Optional: Adds a slight dark overlay */
+  }
+  
+  header {
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
+    color: #fff;
     padding: 20px;
-    background-color: #f44336; /* Red */
-    color: white;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-
-.alert-box button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    background-color: #333;
-    color: white;
+    text-align: center;
+  }
+  
+  nav {
+    background-color: rgba(68, 68, 68, 0.8); /* Slightly transparent background */
+  }
+  
+  .tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tab-link {
+    padding: 14px 20px;
     cursor: pointer;
-    border-radius: 5px;
-}
+    color: white;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab-link:hover {
+    background-color: rgba(85, 85, 85, 0.8);
+  }
+  
+  .tab-content {
+    padding: 20px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .tab-content.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .event-container, .detail-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .event-container:hover, .detail-container:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  .event-container h3, .detail-container h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .event-container .location, .detail-container p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .event-container .description {
+    margin: 0;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  #predictionForm {
+      margin-top: 20px;
+  }
+  
+  #predictionForm label {
+      display: block;
+      margin: 10px 0 5px;
+  }
+  
+  #predictionForm input, #predictionForm button {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  
+  .alert-box {
+      display: none; /* Hidden by default */
+      padding: 20px;
+      background-color: #f44336; /* Red */
+      color: white;
+      margin-top: 20px;
+      border-radius: 5px;
+  }
+  
+  .alert-box button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+  }
