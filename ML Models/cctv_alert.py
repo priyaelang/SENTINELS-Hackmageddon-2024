@@ -5,6 +5,9 @@ import os
 train_images_path = "D:\\repo-clone\\Datasets\\train_data\\images"
 test_images_path = "D:\\repo-clone\\Datasets\\test_data\\images"
 
+# Set the threshold for displaying images
+threshold = 5  # Change this value as needed
+
 # Initialize the HOG descriptor/person detector
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
@@ -36,6 +39,16 @@ test_images = load_images(test_images_path)
 # Detect and count people in the test images
 predicted_counts = detect_and_count_people(test_images)
 
-# Print results for the test images
+# Print results for the test images and display images if count exceeds the threshold
 for i, count in enumerate(predicted_counts):
     print(f"Image {i + 1} detected {count} people.")
+    if count > threshold:
+        print(f"Displaying Image {i + 1} as it exceeds the threshold with {count} people detected.")
+        image = test_images[i]
+        rects, _ = hog.detectMultiScale(image, winStride=(4, 4), padding=(8, 8), scale=1.05)
+        for (x, y, w, h) in rects:
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.imshow(f'Detection - Image {i + 1}', image)
+        cv2.waitKey(0)
+
+cv2.destroyAllWindows()
