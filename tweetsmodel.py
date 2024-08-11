@@ -36,9 +36,8 @@ for tweet in tweets:
             'location': tweet.get('location', '')
         })
 
-# Save the filtered incidents to a JSON file
-with open('filtered_incidents.json', 'w') as f:
-    json.dump(relevant_tweets, f, indent=4)
+# Push the filtered incidents to Firebase under 'filtered_incidents'
+filtered_incidents_ref = db.reference('filtered_incidents')
+filtered_incidents_ref.set(relevant_tweets)
 
-print("Filtered incidents have been saved to 'filtered_incidents.json'.")
 
